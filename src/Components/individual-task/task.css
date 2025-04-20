@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'Urbanist';
+    src: local('Urbanist'),url(../../../public/fonts/Urbanist-VariableFont_wght.ttf) format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Urbanist';
+}
+
+body {
+    background-color: #121212; /* Темный фон для всего сайта */
+    color: #e0e0e0; /* Светлый цвет текста */
+}
+
+.checkInput {
+    display: flex;
+}
+
+.task {
+    margin: 0 2em;
+    height: 50px;
+    width: 95%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #555; /* Темная рамка */
+    background-color: #333333; /* Темный фон для задач */
+    border-radius: 8px; /* Слегка скругленные углы */
+    transition: all 0.1s;
+}
+.task:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+input[type="checkbox"] {
+    border-radius: 100%;
+    height: 20px;
+    aspect-ratio: 1/1;
+    margin: 0 1em 0 0;
+    align-items: center;
+    background-color: #333; /* Темный фон для чекбокса */
+    border: 2px solid #555; /* Темная граница для чекбокса */
+}
+
+input[type="checkbox"]:checked {
+    background-color: #4caf50; /* Зеленый цвет, если выбран */
+    border: 2px solid #388e3c; /* Зеленая граница */
+}
+.taskTitle {
+    display: flex;
+    align-items: center;
+}
+.taskTitle.checked {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.priorityCircle {
+    margin: auto 1em;
+    border-radius: 50%;
+    height: 40%;
+    aspect-ratio: 1/1;
+    background-color: #777; /* Серая иконка при отсутствии приоритета */
+}
+
+.priorityCircle.low {
+    background-color: greenyellow; /* Зеленый приоритет */
+}
+
+.priorityCircle.medium {
+    background-color: yellow; /* Желтый приоритет */
+}
+
+.priorityCircle.high {
+    background-color: red; /* Красный приоритет */
+}
+
+.priorityText {
+    align-items: center;
+    display: flex;
+}
+
+.priorityHolder {
+    display: flex;
+    height: 100%;
+    padding-left: 1em;
+}
+.priorityHolder:hover {
+    background-color: rgb(78, 78, 78);
+    border-radius: 20px;
+}

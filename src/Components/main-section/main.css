@@ -1,0 +1,9 @@
+.mainSection {
+    position: fixed;
+    left: 20vw;
+    width: 80vw;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: aqua;
+}

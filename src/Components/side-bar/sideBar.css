@@ -1,0 +1,6 @@
+.taskBar {
+    position: fixed;
+    height: 100vh;
+    width: 20vw;
+    background-color: gray;
+}
