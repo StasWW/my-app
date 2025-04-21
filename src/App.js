@@ -8,7 +8,7 @@ function App() {
     <>
       <SideBar />
       <Main />
-      {/* Description must not be added hear*/}
+      {/* Description must not be added here*/}
       {/* Description must be Main's child*/}
     </>
   );
