@@ -2,6 +2,7 @@ import React from 'react';
 import './sideBar.css';
 import Profile from './Profile/profile';
 import TaskGroup from './task-group/task-group';
+import AddTask from './add-task/addTask';
 
 class SideBar extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class SideBar extends React.Component {
         return (
             <div className='taskBar'>
                 <Profile />
-                <TaskGroup name="My Day"/>
+                <AddTask />
             </div>
         );
     }

@@ -6,9 +6,8 @@ function Main (props) {
         <div className="mainSection">
             <h1>{props.section ?? 'Untitled'}</h1>
             <div className="taskHolder">
-                <Task id="0" title="Viebat barana" completion={false}></Task>
+                
             </div>
-            {/* Here should be a button to add task */}
         </div>
     );
 }

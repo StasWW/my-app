@@ -1,5 +1,6 @@
 import React from 'react';
 import './task.css';
+import AddTask from '../side-bar/add-task/addTask';
 
 class Task extends React.Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class Task extends React.Component {
         this.state = {
             id: props.id,
             title: props.title,
-            priority: props.priority ?? 0,
+            priority: props.priority,
             completion: props.completion ?? false,
             dropdownVisibility: false,
         };
@@ -60,18 +61,20 @@ class Task extends React.Component {
         const priorityText = completion ? '' : `${['Low', 'Medium', 'High'][priority]} priority`;
 
         return (
-            <div className='task' onClick={this.toggled}>
+            <div className='task' 
+            onClick={this.toggled}
+            id={`T${id}`}
+            >
                 <div className='checkInput'>
                     <input
                         className='checkboxClass'
                         type="checkbox"
                         checked={completion}
                         onChange={this.toggled}
-                        id={id}
                     />
                     <label
                         htmlFor={id}
-                        className={`taskTitle${completion ? ' checked' : ''}`}
+                        className={`taskTitle${completion ? ' checked' : ''}`} 
                     >
                         {title}
                     </label>

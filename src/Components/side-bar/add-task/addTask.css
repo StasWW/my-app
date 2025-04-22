@@ -1,0 +1,44 @@
+.addTask {
+    position: fixed;
+    bottom: 0;
+    width: inherit;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+}
+.plusSign {
+    font-size: 1.5em;
+    font-weight: 200;
+    margin: 0 0.3em 0 0;
+    padding-bottom: 0.1em;
+}
+.addTaskBtn {
+    padding: 0 0 0 1em;
+    text-align: start;
+    display: flex;
+
+}
+.addListBtn {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: 200;
+}
+.addTask > button {
+    height: 100%;
+    background-color: inherit;
+    border: none;
+    color: inherit;
+    font-weight: 300;
+    border-radius: 5px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+
+.addTask > button:hover {
+    background-color: #2a2a2a;
+}
+.addTask > button:active {
+    background-color: #363636;
+}
