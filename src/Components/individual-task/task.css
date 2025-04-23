@@ -18,7 +18,8 @@ body {
 }
 
 .task {
-    margin: 0 2em;
+    z-index: -1;
+    margin: 0.7em 2em;
     height: 50px;
     width: 95%;
     padding: 10px;
@@ -42,13 +43,13 @@ body {
     aspect-ratio: 1/1;
     margin: 0 1em 0 0;
     align-items: center;
-    background-color: #3f3f3f; /* Темный фон для чекбокса */
-    border: 2px solid #555; /* Темная граница для чекбокса */
+    background-color: #3f3f3f; 
+    border: 2px solid #555; 
 }
 
 .checkboxClass:checked {
-    background-color: #4caf50; /* Зеленый цвет, если выбран */
-    border: 2px solid #388e3c; /* Зеленая граница */
+    background-color: #4caf50; 
+    border: 2px solid #388e3c; 
 }
 .taskTitle {
     display: flex;
@@ -65,6 +66,7 @@ body {
     height: 40%;
     aspect-ratio: 1/1;
     background-color: #777; 
+    z-index: 1; 
 }
 
 .priorityCircle.low {
@@ -82,6 +84,7 @@ body {
 .priorityText {
     align-items: center;
     display: flex;
+    z-index: -1; 
 }
 
 .priorityHolder {
@@ -90,10 +93,14 @@ body {
     height: 100%;
     padding-left: 1em;
 }
+
 .priorityHolder:hover {
+    
     background-color: rgb(78, 78, 78);
     border-radius: 20px;
+    z-index: 2; 
 }
+
 .dropdownContent {
     position: absolute;
     top: 105%;
@@ -101,26 +108,32 @@ body {
     background-color: #363636;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
     border-radius: 8px;
+    z-index: 3; 
 }
+
 .dropdownContent > a {
     color: white;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
+
 .dropdownContent > a:first-of-type {
     border-radius: 8px 8px 0 0;
 }
+
 .dropdownContent > a:last-of-type {
     border-radius: 0 0 8px 8px;
 }
+
 .dropdownContent > a:hover {
     background-color: #3f3f3f;
 }
+
 .dropdownTxt {
     display: flex;
     flex-direction: row;
     align-items: center;
+    z-index: inherit;
 }

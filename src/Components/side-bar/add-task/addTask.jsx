@@ -1,73 +1,65 @@
 import React from "react";
 import './addTask.css';
-import Task from "../../individual-task/task";
-import { createRoot } from 'react-dom/client';
-import ReactDOM from 'react-dom';
+import { useTasks } from "../../../context";
 
-class AddTask extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            tasks: [],
-        }
-    }
+function AddTask () {
 
     /* Tasks have: title, priority, completion 
     TODO - description
     LONG TODO - due date, reminder date
     */ 
-    //Example task properties: <Task id="0" title="Viebat barana" completion={false}></Task>
-    addTask (title, priority, completion=false) {  
-        const taskPlace = document.querySelector('.taskHolder');
-        const root = createRoot(taskPlace);
-        let lastTaskId = this.state.tasks.length - 1;
+    
+    const { tasks, addTask, deleteTask } = useTasks();
 
-        const task = {
-            id: lastTaskId + 1,  // Increment the id to create a unique task id
-            title,
-            priority, 
-            completion,
-        };
+    const handleAddTask = () => {
+        const taskDiv = document.createElement('div');
+        taskDiv.classList.add('task');
+        taskDiv.classList.add('inp');
 
-        this.setState(prevState => ({
-            tasks: [...prevState.tasks, task],
-        }));
 
-        lastTaskId++;
-        root.render(<Task id={task.id} title={task.title} priority={task.priority} completion={task.completion}/>);
-        console.log(task)
-    }
-    getTasks () {
-        return this.state.tasks;
-    }
-    deleteTask (id) {
-        const elementToRemove = document.querySelector(`.task#T${id}`)
-        elementToRemove.remove();
-        this.setState(prevState => ({ 
-            tasks: prevState.tasks.filter(task => task.id !== id), //Просто заново создаем массив
-          }));
-    }
-    userChangedSomething ({ title, priority, completion }) {
-
-    } 
-    render () {
-        return (
-        <div className="addTask">
-            <button 
-            className="addTaskBtn col-10"
-            onClick={() => this.addTask("Viebat barana", 0)}
-            >
-                <span className="plusSign">+</span>Add Task
-            </button>
-            <button 
-            className="addListBtn col"
-            onClick={() => this.deleteTask(0)}
-            >
-                -
-            </button>
-        </div>
+        taskDiv.innerHTML = (
+            `<input 
+                className="titleInput"
+                placeholder="Name of your task here"
+            />
+            <button>Log Task</button>
+            `
         );
+
+        
+        const taskHolder = document.querySelector('.taskHolder');
+        taskHolder.appendChild(taskDiv);
+        
+        let title = '';
+        const input = document.querySelector('.task > input');
+        input.addEventListener('change', (e) => { title=e.target.value })
+
+        const button = taskDiv.querySelector('button');  
+        button.addEventListener('click', () => {
+            addTask(title, 0);  
+            document.querySelector('.task.inp').remove();
+    });
+    };
+    const handleDeleteTask = () => {
+        deleteTask();
     }
+    
+    return (
+    <div className="addTask">
+        <button 
+        className="addTaskBtn col-10"
+        onClick={() => handleAddTask()}
+        >
+            <span className="plusSign">+</span>Add Task
+        </button>
+        <button 
+        className="addListBtn col"
+        onClick={() => handleDeleteTask()}
+        >
+            -
+        </button>
+    </div>
+    );
 }
 
 export default AddTask;

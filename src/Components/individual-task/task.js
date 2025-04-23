@@ -1,6 +1,5 @@
 import React from 'react';
 import './task.css';
-import AddTask from '../side-bar/add-task/addTask';
 
 class Task extends React.Component {
     constructor(props) {
@@ -92,6 +91,7 @@ class Task extends React.Component {
             </div>
         );
     }
+    
 }
 
 export default Task;
