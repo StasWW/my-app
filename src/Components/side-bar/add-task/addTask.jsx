@@ -6,7 +6,7 @@ function AddTask () {
 
     /* Tasks have: title, priority, completion 
     TODO - description
-    LONG TODO - due date, reminder date
+    LONG TODO - due date, reminder date(?)
     */ 
     
     const { tasks, addTask, deleteTask } = useTasks();
@@ -45,20 +45,28 @@ function AddTask () {
     }
     
     return (
-    <div className="addTask">
-        <button 
-        className="addTaskBtn col-10"
-        onClick={() => handleAddTask()}
-        >
-            <span className="plusSign">+</span>Add Task
-        </button>
-        <button 
-        className="addListBtn col"
-        onClick={() => handleDeleteTask()}
-        >
-            -
-        </button>
-    </div>
+    <>  
+        <div className="addList">
+            <button
+                className="addListBtn"
+            >Add List
+            </button>
+        </div>
+        <div className="addTask">
+            <button 
+            className="addTaskBtn col-10"
+            onClick={handleAddTask}
+            >
+                <span className="plusSign">+</span>Add Task
+            </button>
+            <button 
+            className="delTaskBtn col"
+            onClick={handleDeleteTask}
+            >
+                -
+            </button>
+        </div>
+    </>
     );
 }
 

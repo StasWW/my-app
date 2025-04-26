@@ -6,10 +6,9 @@ import { TasksProvider } from './context';
 
 function App() {
   return (
-    <TasksProvider>
+    <TasksProvider> {/* Контекст, чтобы любой элемент знал таски */}
       <Main />
       <SideBar />
-      
     </TasksProvider>
   );
 }
