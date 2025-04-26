@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './addTask.css';
 import { useTasks } from "../../../context";
 
@@ -9,7 +9,7 @@ function AddTask () {
     LONG TODO - due date, reminder date(?)
     */ 
     
-    const { tasks, addTask, deleteTask } = useTasks();
+    const { tasks, addTask, deleteTask, setGroupToDisplay, addGroup } = useTasks();
 
     const handleAddTask = () => {
         const taskDiv = document.createElement('div');
@@ -44,12 +44,15 @@ function AddTask () {
         deleteTask();
     }
     
+
     return (
     <>  
         <div className="addList">
             <button
                 className="addListBtn"
-            >Add List
+                onClick={addGroup}
+            >
+                Add List
             </button>
         </div>
         <div className="addTask">

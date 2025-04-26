@@ -1,0 +1,38 @@
+.groupHolder {
+    overflow-y: auto;
+    height: 77%;
+}
+.groupElement {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    margin: 0;
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    color: rgb(162, 162, 162);
+    transition: all 0.1s;
+    padding: 0.8em 0 0.8em 1em;
+}
+.groupElement:hover {
+    background-color: #2a2a2a;
+    color: white;
+}
+.groupElement:active {
+    background-color: #363636;
+}
+hr {
+    margin-bottom: 0;
+}
+.closingX {
+    height: 100%;
+
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.closingX:hover {
+    background-color: rgba(255, 0, 0, 0.375);
+}
+.closingX:active {
+    background-color: red;
+}

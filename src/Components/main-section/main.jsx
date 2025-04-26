@@ -5,11 +5,14 @@ import AddTask from '../side-bar/add-task/addTask';
 
 
 function Main() {
-    const { tasks, addTask, deleteTask } = useTasks();
+    const { taskGroups, currentGroup } = useTasks();
+
+    const tasks = taskGroups[currentGroup].tasks;
+    const groupName = taskGroups[currentGroup].name;
 
     return (
         <div className="mainSection">
-            <h1>Untitled</h1>
+            <h1>{groupName}</h1>
             <div className="taskHolder">
                 {   
                 tasks.length > 0 ? (
@@ -23,7 +26,8 @@ function Main() {
                         />
                     ))
                 ) : (
-                    <p style={ {marginLeft: 40, fontSize: 18} }>Let's start by pressing <strong>Add task</strong></p>
+                    <p style={ {marginLeft: 40, fontSize: 18} }>Let's start by pressing <strong>Add task </strong> 
+                     to add task to <strong>{groupName}</strong> task group</p> 
                 )
              }
             </div>
