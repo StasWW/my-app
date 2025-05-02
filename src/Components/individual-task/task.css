@@ -84,7 +84,7 @@ body {
 .priorityText {
     align-items: center;
     display: flex;
-    z-index: -1; 
+    z-index: 1; 
 }
 
 .priorityHolder {

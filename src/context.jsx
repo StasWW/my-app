@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const TasksContext = createContext();
 
@@ -9,22 +10,9 @@ export const TasksProvider = ({ children }) => {
     let tasks = taskGroups[currentGroup].tasks;
     let groupName = taskGroups[currentGroup].name;
 
-    const minAvailableId = () => {
-        if (tasks.length === 0) {
-            return 0;
-        } else {
-            const tasksId = new Set( tasks.map( (task) => task.id ) ) // Set, потому что его время обращения к элементу О(1)
-            let id = 0;
-            while (tasksId.has(id)) {
-                id++;
-            }
-            return id;
-        }
-    }
-
     const addTask = (title, priority, completion = false) => {
         const newTask = {
-            id: minAvailableId(), 
+            id: uuidv4(), 
             title,
             priority,
             completion,
@@ -40,7 +28,7 @@ export const TasksProvider = ({ children }) => {
         console.log(taskGroups);
     };
 
-    const deleteTask = (id = tasks.length - 1) => { // По дефолту удаляется самый последний таск
+    const deleteTask = (id = tasks[tasks.length - 1].id) => { // По дефолту удаляется самый последний таск
         setTaskGroups( prevTaskGroup => {
             const updatedTaskGroup = [...prevTaskGroup];
             updatedTaskGroup[currentGroup] = {

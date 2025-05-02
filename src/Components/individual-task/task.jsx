@@ -1,97 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './task.css';
+import { useTasks } from '../../context';
 
-class Task extends React.Component {
-    constructor(props) {
-        super(props);
+const Task = ({ id, title, priority, completion = false }) => {
+    const { addTask, deleteTask } = useTasks();
+    const [isCompleted, setIsCompleted] = useState(completion);
+    const [dropdownVisibility, setDropdownVisibility] = useState(false);
 
-        this.state = {
-            id: props.id,
-            title: props.title,
-            priority: props.priority,
-            completion: props.completion ?? false,
-            dropdownVisibility: false,
-        };
+    const toggled = () => {
+        setIsCompleted(prevState => !prevState);
+    };
 
-        this.toggled = this.toggled.bind(this);
-        this.toggleDropdown = this.toggleDropdown.bind(this);
-        this.renderDropdown = this.renderDropdown.bind(this);
-        this.unClickable = this.unClickable.bind(this);
-        this.handlePriorityChange = this.handlePriorityChange.bind(this);
-    }
+    const toggleDropdown = () => {
+        setDropdownVisibility(prevState => !prevState);
+    };
 
-    toggled() {
-        this.setState(prevState => ({
-            completion: !prevState.completion,
-        }));
-    }
-
-    toggleDropdown() {
-        this.setState(prevState => ({
-            dropdownVisibility: !prevState.dropdownVisibility,
-        }));
-    }
-
-    unClickable(e) {
+    const unClickable = (e) => {
         e.stopPropagation();
-    }
+    };
 
-    handlePriorityChange(priority) {
-        return () => {
-            this.setState({
-                priority,
-                dropdownVisibility: false,
-            });
-        };
-    }
+    const handlePriorityChange = (newPriority) => {
+        addTask(title, newPriority);
+        deleteTask(id);
+    };
 
-    renderDropdown() {
-        return (
-            <div className="dropdownContent">
-                <a className='dropdownTxt' onClick={this.handlePriorityChange(0)}>Low priority</a>
-                <a className='dropdownTxt' onClick={this.handlePriorityChange(1)}>Medium priority</a>
-                <a className='dropdownTxt' onClick={this.handlePriorityChange(2)}>High priority</a>
-            </div>
-        );
-    }
+    const renderDropdown = () => (
+        <div className="dropdownContent">
+            <a className='dropdownTxt' onClick={() => handlePriorityChange(0)}>Low priority</a>
+            <a className='dropdownTxt' onClick={() => handlePriorityChange(1)}>Medium priority</a>
+            <a className='dropdownTxt' onClick={() => handlePriorityChange(2)}>High priority</a>
+        </div>
+    );
 
-    render() {
-        const { id, title, completion, priority, dropdownVisibility } = this.state;
-        const priorityText = completion ? '' : `${['Low', 'Medium', 'High'][priority]} priority`;
+    const priorityText = isCompleted ? '' : `${['Low', 'Medium', 'High'][priority]} priority`;
 
-        return (
-            <div className='task' 
-            onClick={this.toggled}
+    return (
+        <div className='task' 
+            onClick={toggled}
             id={`T${id}`}
-            >
-                <div className='checkInput'>
-                    <input
-                        className='checkboxClass'
-                        type="checkbox"
-                        checked={completion}
-                        onChange={this.toggled}
-                    />
-                    <label
-                        htmlFor={id}
-                        className={`taskTitle${completion ? ' checked' : ''}`} 
-                    >
-                        {title}
-                    </label>
-                </div>
-                <div
-                    className='priorityHolder'
-                    onClick={this.unClickable}
-                    onMouseEnter={() => !completion && this.toggleDropdown()}
-                    onMouseLeave={() => !completion && this.toggleDropdown()}
+        >
+            <div className='checkInput'>
+                <input
+                    className='checkboxClass'
+                    type="checkbox"
+                    checked={isCompleted}
+                    onChange={toggled}
+                />
+                <label
+                    htmlFor={id}
+                    className={`taskTitle${isCompleted ? ' checked' : ''}`} 
                 >
-                    <span className='priorityText'>{priorityText}</span>
-                    <div className={`priorityCircle${completion ? '' : ` ${['low', 'medium', 'high'][priority]}`}`} />
-                    {dropdownVisibility && this.renderDropdown()}
-                </div>
+                    {title}
+                </label>
             </div>
-        );
-    }
-    
-}
+            <div
+                className='priorityHolder'
+                onClick={unClickable}
+                onMouseEnter={() => !isCompleted && toggleDropdown()}
+                onMouseLeave={() => !isCompleted && toggleDropdown()}
+            >
+                <span className='priorityText'>{priorityText}</span>
+                <div className={`priorityCircle${isCompleted ? '' : ` ${['low', 'medium', 'high'][priority]}`}`} />
+                {dropdownVisibility && renderDropdown()}
+            </div>
+        </div>
+    );
+};
 
 export default Task;
