@@ -8,8 +8,12 @@ const Task = ({ id, title, priority, completion = false }) => {
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
 
     const toggled = () => {
-        setIsCompleted(prevState => !prevState);
+        const newCompletionState = !isCompleted;  
+        setIsCompleted(newCompletionState);       
+        addTask(title, priority, newCompletionState);
+        deleteTask(id);                          
     };
+    
 
     const toggleDropdown = () => {
         setDropdownVisibility(prevState => !prevState);
