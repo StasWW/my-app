@@ -6,8 +6,8 @@ class Profile extends React.Component {
         super(props);
         this.state = {
         userId: props.userId ?? '-1',
-        name: props.name ?? 'Anonymous user',
-        pfpFileName: props.pfpFileName?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0kXVJsahOTMHrAaWeK9t6tzRj8prZFaym1A&s',
+        name: props.name ?? 'Болван',
+        pfpFileName: props.pfpFileName?? "https://media1.tenor.com/m/zGQLL-kwwEoAAAAd/cat-meme-pee.gif",
     };
     }
     render () {

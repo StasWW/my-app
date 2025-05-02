@@ -6,17 +6,17 @@ import { TasksProvider } from './context';
 import { useEffect } from 'react';
 
 function App() {
-  useEffect(() => {
-    const handleContextMenu = (e) => {
-      e.preventDefault();
-    };
+  // useEffect(() => {
+  //   const handleContextMenu = (e) => {
+  //     e.preventDefault();
+  //   };
 
-    document.addEventListener('contextmenu', handleContextMenu);
+  //   document.addEventListener('contextmenu', handleContextMenu);
 
-    return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener('contextmenu', handleContextMenu);
+  //   };
+  // }, []);
   return (
     <TasksProvider> {/* Контекст, чтобы любой элемент знал таски */}
       <Main />

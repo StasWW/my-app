@@ -37,6 +37,12 @@ const Task = ({ id, title, priority, completion = false }) => {
     return (
         <div className='task' 
             onClick={toggled}
+            onContextMenu={(e) => {
+                e.preventDefault();
+                if (window.confirm('Are you sure you want to delete the task?')) {
+                    deleteTask(id);
+                }
+            }}
             id={`T${id}`}
         >
             <div className='checkInput'>
