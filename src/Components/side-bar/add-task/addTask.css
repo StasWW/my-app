@@ -4,6 +4,10 @@
     height: 40px;
     width: inherit;
 }
+.addList span {
+    margin-left: 1em;
+    font-size: 18;
+}
 .addListBtn {
     width: 100%;
     text-align: center;
@@ -51,4 +55,27 @@
 }
 .addTask > button:active, .addListBtn:active {
     background-color: #363636;
+}
+.logTaskBtn, .cancelTaskBtn {
+    background-color: inherit;
+    margin: 0;
+    border: solid 3px #1e1e1e;
+    transition: all 0.1s;
+}
+.logTaskBtn {
+    color: greenyellow;
+    border-radius: 20px 0 0 20px;
+    border-right-width: 0;
+}
+.cancelTaskBtn {
+    margin-left: -4px !important;
+    border-left-width: 0;
+    color: red;
+    border-radius: 0 20px 20px 0;
+}
+.logTaskBtn:hover {
+    background-color: rgba(0, 128, 0, 0.4);
+}
+.cancelTaskBtn:hover {
+    background-color: rgba(128, 0, 0, 0.4);
 }

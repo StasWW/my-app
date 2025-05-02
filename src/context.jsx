@@ -62,7 +62,7 @@ export const TasksProvider = ({ children }) => {
                 return updatedTaskGroups;
             })
         } else {
-            window.alert('You cannot delete the only group! Try renaming the group instead');
+            window.alert('You cannot delete the first group! Try renaming the group instead');
             console.error('Cannot delete the only group')
         }
     }
