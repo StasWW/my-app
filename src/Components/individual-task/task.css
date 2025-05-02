@@ -34,7 +34,7 @@ body {
 }
 .task:hover {
     cursor: pointer;
-    transform: scale(1.01);
+    transform: scale(1.005);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 .checkboxClass {

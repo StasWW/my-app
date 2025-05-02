@@ -44,7 +44,6 @@ const Task = ({ id, title, priority, completion = false }) => {
                     className='checkboxClass'
                     type="checkbox"
                     checked={isCompleted}
-                    onChange={toggled}
                 />
                 <label
                     htmlFor={id}
