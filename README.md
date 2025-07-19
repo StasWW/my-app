@@ -1,4 +1,4 @@
-#This is purely a test project made to practice React
+# This is purely a test project made to practice React
 Приложение создано для предмета ОСНОВЫ ПРОГРАММИРОВАНИЯ, как дополнительное задание выполняемое по желанию студента
 
 *таски = задания*
